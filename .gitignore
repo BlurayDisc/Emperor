@@ -1,3 +1,23 @@
+# =========================
+# Java
+# =========================
+classes/
+*.class
+
+# =========================
+# Netbeans
+# =========================
+build/
+nbproject/
+
+# =========================
+# Eclipse
+# =========================
+.settings/
+bin/
+*.classpath
+*.project
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db

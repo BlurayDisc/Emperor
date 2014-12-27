@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+--><player>
+    <systemTime>1419698834</systemTime>
+    
+    <personels>
+        <person>曹重七</person>
+        <person>陈阿八</person>
+        <person>曹阿八</person>
+        <person>杨七保</person>
+        <person>韩八</person>
+        <person>潘重七</person>
+        <person>叶小二</person>
+        <person>魏阿四</person>
+        <person>谢重二</person>
+        <person>潘阿九</person>
+    </personels>
+    
+    <info>
+        <balance>3569243</balance>
+        <theft>1</theft>
+        <taxes>1</taxes>
+        <popularity>100</popularity>
+        <power>100</power>
+    </info>
+    
+    <structures>
+        <house>0</house>
+        <farm>0</farm>
+        <blacksmith>0</blacksmith>
+        <barracks>0</barracks>
+    </structures>
+    
+    <technology>
+        <farming>0</farming>
+        <smithing>0</smithing>
+        <horseRiding>0</horseRiding>
+        <archery>0</archery>
+        <swordsmanship>0</swordsmanship>
+    </technology>
+    
+    <politicis>
+        <collectTaxes>0</collectTaxes>
+        <charity>0</charity>
+    </politicis>
+</player>
