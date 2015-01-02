@@ -3,14 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package emperor.model;
+package emperor.country;
 
 /**
  *
  * @author RuN
  */
-public abstract class PoliticalSystem {
+public abstract class Country {
     
+	public static final int CH = 0;
+	public static final int AU = 1;
+	public static final int UK = 2;
+	public static final int US = 3;
+	public static final int RU = 4;
+	public static final int KR = 5;
+
     protected String currencyName;
     protected String balanceName;
     protected String theftName;
@@ -31,15 +38,14 @@ public abstract class PoliticalSystem {
     protected int taxesBonusPercent;
     protected int theftBonusPercent;
     
-    public PoliticalSystem() {
-        super();
+    protected Country() {
         taxesBonusPercent = 0;
         theftBonusPercent = 0;
         inflation = 0;
         popularity = 0;
     }
     
-    public abstract void theft();
+    public abstract void collect();
     
     // Balance
     public void incrementBalance() {

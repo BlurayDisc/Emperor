@@ -5,11 +5,16 @@
  */
 package emperor.view;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import emperor.message.GameMessage;
 
 /**
  *
@@ -33,10 +38,16 @@ public class ButtonsPanel extends JPanel{
         initButtons();
     }
     
+    protected void initText(GameMessage gm) {
+    	infoButton.setText(gm.InfoButtonText);
+    	structureButton.setText(gm.BuildingButtonText);
+    	technologyButton.setText(gm.TechnologyButtonText);
+    	politicsButton.setText(gm.PoliticButtonText);
+    }
+    
     private void initButtons() {
                 
         // Info Button
-        infoButton.setText("基本信息");
         infoButton.setBounds(50, 30, 100, 40);
         infoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent action) {
@@ -48,7 +59,6 @@ public class ButtonsPanel extends JPanel{
         });
         
         // Structure Button
-        structureButton.setText("建造设施");
         structureButton.setBounds(183, 30, 100, 40);
         structureButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent action) {
@@ -60,7 +70,6 @@ public class ButtonsPanel extends JPanel{
         });
         
         // Technology Button
-        technologyButton.setText("改良科技");
         technologyButton.setBounds(317, 30, 100, 40);
         technologyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent action) {
@@ -72,7 +81,6 @@ public class ButtonsPanel extends JPanel{
         });
         
         // Politics Button
-        politicsButton.setText("处理公务");
         politicsButton.setBounds(450, 30, 100, 40);
         politicsButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent action) {
@@ -83,9 +91,16 @@ public class ButtonsPanel extends JPanel{
             }
         });
         
-        this.add(infoButton);
-        this.add(technologyButton);
-        this.add(structureButton);
-        this.add(politicsButton);
-    }    
+        add(infoButton);
+        add(technologyButton);
+        add(structureButton);
+        add(politicsButton);
+    }
+    
+    @Override
+    public void paintComponents(Graphics g) {
+        Graphics2D g2 = (Graphics2D)g;
+        RenderingHints rh = new RenderingHints(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        g2.setRenderingHints(rh);
+    }
 }

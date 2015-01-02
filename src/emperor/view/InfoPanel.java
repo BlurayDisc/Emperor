@@ -5,6 +5,9 @@
  */
 package emperor.view;
 
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -90,5 +93,12 @@ public class InfoPanel extends JPanel{
             }
         });
         add(regenerateButton);
+    }
+    
+    @Override
+    public void paintComponents(Graphics g) {
+        Graphics2D g2 = (Graphics2D)g;
+        RenderingHints rh = new RenderingHints(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        g2.setRenderingHints(rh);
     }
 }

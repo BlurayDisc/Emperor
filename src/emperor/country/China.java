@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package emperor.model;
+package emperor.country;
 
 /**
  *
  * @author RuN
  */
-public class ChinaPoliticalSystem extends PoliticalSystem {
+public class China extends Country {
+	
+	private static final China instance = new China();
     
-    private static final ChinaPoliticalSystem instance = new ChinaPoliticalSystem();
-    
-    private ChinaPoliticalSystem() {
+    protected China() {
         
         // Init Strings
         currencyName = " 两白银";
@@ -36,12 +36,12 @@ public class ChinaPoliticalSystem extends PoliticalSystem {
     }
     
     @Override
-    public void theft() {
+    public void collect() {
         balance += adjustedTheft;
         increasePopularity(-1);
     }
     
-    public static ChinaPoliticalSystem getInstance() {
-        return instance;
+    public static China getInstance() {
+    	return instance;
     }
 }

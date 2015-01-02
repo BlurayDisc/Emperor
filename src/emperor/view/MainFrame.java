@@ -23,6 +23,7 @@ public class MainFrame extends JFrame{
 	private static final long serialVersionUID = -956722615494309197L;
     
     private static final ContentPane contentPane;
+    private static final StartPanel startPanel;
     public static final DisplayPanel displayPanel;
     public static final InfoPanel infoPanel;
     public static final StructurePanel structurePanel;
@@ -33,6 +34,7 @@ public class MainFrame extends JFrame{
     
     static {
         contentPane = new ContentPane();
+        startPanel = new StartPanel();
         displayPanel = new DisplayPanel();
         infoPanel = new InfoPanel();
         structurePanel = new StructurePanel();
@@ -47,7 +49,7 @@ public class MainFrame extends JFrame{
         setLayout(null);
         
         // Init Panels
-        panels = new JPanel[] {displayPanel, buttonsPanel, infoPanel, structurePanel, technologyPanel, politicsPanel};
+        panels = new JPanel[] {startPanel, displayPanel, buttonsPanel, infoPanel, structurePanel, technologyPanel, politicsPanel};
         initPanels();
                 
         // Other Attributes
@@ -65,16 +67,32 @@ public class MainFrame extends JFrame{
                 
         // Init Panels
     	for (JPanel panel: panels) {
+    		
+    		getContentPane().add(panel);
     		panel.setLayout(null);
     		panel.setBackground(Color.WHITE);
-    		if (panel instanceof DisplayPanel) panel.setBounds(5, 5, 590, 60);
-    		else if (panel instanceof ButtonsPanel) panel.setBounds(5, 315, 590, 80);
-    		else panel.setBounds(7, 65, 584, 248);
-    		if (panel instanceof DisplayPanel || panel instanceof ButtonsPanel) panel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
-    		else panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-    		if (panel instanceof DisplayPanel || panel instanceof ButtonsPanel || panel instanceof InfoPanel) panel.setVisible(true);
-    		else panel.setVisible(false);
-    		getContentPane().add(panel);
+    		
+    		if (panel instanceof StartPanel) {
+    			panel.setBounds(5, 5, 590, 390);
+    		} else if (panel instanceof DisplayPanel) {
+    			panel.setBounds(5, 5, 590, 60);
+    		} else if (panel instanceof ButtonsPanel) {
+    			panel.setBounds(5, 315, 590, 80);
+    		} else {
+    			panel.setBounds(7, 65, 584, 248);
+    		}
+    		
+    		if (panel instanceof DisplayPanel || panel instanceof ButtonsPanel) {
+    			panel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED));
+    		} else {
+    			panel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
+    		}
+    		
+    		if (panel instanceof StartPanel) {
+    			panel.setVisible(true);
+    		} else {
+    			panel.setVisible(false);
+    		}
     	}
     }
     

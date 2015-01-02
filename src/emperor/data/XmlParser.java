@@ -25,9 +25,11 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import emperor.controller.GameController;
-import emperor.model.ChinaPoliticalSystem;
-import emperor.model.Person;
+import emperor.country.China;
+import emperor.country.Country;
+import emperor.country.CountryFactory;
 import emperor.model.Player;
+import emperor.model.personnel.Person;
 
 /**
  *
@@ -45,37 +47,37 @@ public class XmlParser {
         filePath = "src" + File.separator + "emperor" + File.separator + "data" + File.separator + "save.xml";
     }
     
-    public void readFile() {
+    public void readFile(Country country) {
         try {
             parseFile();                 // reads the xml file into a Document object.
             parseDocument();             // reads the document and store the information in a PoliticalSystem object.
+            updateCountry(country);
         } catch (SAXException | IOException | ParserConfigurationException | XPathExpressionException e) {e.printStackTrace();}
         //System.out.println(bookList);       // print out the book list.
     }
         
-    public void updateFile() {
+    public void updateFile(Country country) {
         try {
             parseFile();                 // reads the xml file into a Document Object Model.
-            updateDocument();            // upodates the Document Object Model.
+            updateDocument(country);            // upodates the Document Object Model.
             writeFile();                 // writes the Document into a file.
         } catch (SAXException | IOException | ParserConfigurationException | TransformerException e) {e.printStackTrace();}
     }
     
-    private void updateDocument() {
+    private void updateDocument(Country country) {
         
         Node timeNode = doc.getElementsByTagName("systemTime").item(0);
         long currentTime = getCurrentTime() / 1000;
         timeNode.setTextContent(Long.toString(currentTime));
         
-        ChinaPoliticalSystem china = ChinaPoliticalSystem.getInstance();
         Node balance = doc.getElementsByTagName("balance").item(0);
-        balance.setTextContent(Long.toString(china.getBalance()));
+        balance.setTextContent(Long.toString(country.getBalance()));
         
         Node theft = doc.getElementsByTagName("theft").item(0);
-        theft.setTextContent(Long.toString(china.getTheft()));
+        theft.setTextContent(Long.toString(country.getTheft()));
         
         Node taxes = doc.getElementsByTagName("taxes").item(0);
-        taxes.setTextContent(Long.toString(china.getTaxes()));
+        taxes.setTextContent(Long.toString(country.getTaxes()));
         
         NodeList personels = doc.getElementsByTagName("person");
         Player player = Player.getInstance();
@@ -121,7 +123,7 @@ public class XmlParser {
         // Politics parsing code goes here...
         
         // Update
-        ChinaPoliticalSystem china = ChinaPoliticalSystem.getInstance();
+        China china = (China) CountryFactory.newInstance().getInstance();
         GameController gc = GameController.getInstance();
         
         gc.setPreviousTime((long) previousTime);
@@ -137,6 +139,14 @@ public class XmlParser {
         for (int i = 0; i < personels.getLength(); i++) {
             player.addPersonels(new Person(personels.item(i).getTextContent()));
         }
+    }
+    
+    private void updateCountry(Country country) {
+    	country.setBalance((long) balance);
+    	country.setTaxes((long) taxes);
+    	country.setTheft((long) theft);
+    	country.setPopularity((int) popularity);
+    	country.setPower((int) power);
     }
     
     @SuppressWarnings("unused") 

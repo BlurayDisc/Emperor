@@ -7,6 +7,9 @@ package emperor.model;
 
 import java.util.ArrayList;
 
+import emperor.model.personnel.OfficialPosition;
+import emperor.model.personnel.Person;
+
 /**
  *
  * @author RuN
