@@ -6,9 +6,12 @@
 package emperor.controller;
 
 import java.util.Calendar;
-import emperor.country.China;
-import emperor.country.Country;
-import emperor.data.XmlParser;
+
+import emperor.model.country.China;
+import emperor.model.country.Country;
+import emperor.model.data.XmlParser;
+import emperor.view.ButtonsPanel;
+import emperor.view.MainFrame;
 
 /**
  *
@@ -17,13 +20,21 @@ import emperor.data.XmlParser;
 public class GameController {
     
     private static final GameController instance = new GameController();
+    private MainFrame main;
     private final Country country;
     private long previousTime;
     
-    private GameController() {
+    public GameController() {
         
         // Init Variables
         country = China.getInstance();
+    }
+    
+    public void addView(MainFrame frame) {
+    	this.main = frame;
+    }
+    
+    public void addView(ButtonsPanel panel) {
     }
 
     

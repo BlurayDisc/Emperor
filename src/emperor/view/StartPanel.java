@@ -12,7 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import emperor.message.GameMessage;
+import emperor.model.message.GameMessage;
 
 public class StartPanel extends JPanel {
 
@@ -41,7 +41,7 @@ public class StartPanel extends JPanel {
 	
 	private void initComponents() {
 		
-		confirmButton.setText("确认");
+		confirmButton.setText("ȷ��");
 		confirmButton.setBounds(200, 200, 80, 40);
 		confirmButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -55,7 +55,7 @@ public class StartPanel extends JPanel {
 		});
 		add(confirmButton);
 		
-		quitButton.setText("退出");
+		quitButton.setText("�˳�");
 		quitButton.setBounds(300, 200, 80, 40);
 		quitButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -64,7 +64,7 @@ public class StartPanel extends JPanel {
 		});
 		add(quitButton);
 		
-		cnRadioButton.setText("中文");
+		cnRadioButton.setText(" ");
 		cnRadioButton.setBounds(450, 150, 80, 22);
 		cnRadioButton.setSelected(true);
 		cnRadioButton.addActionListener(new ActionListener() {

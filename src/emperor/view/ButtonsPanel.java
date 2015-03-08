@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import emperor.message.GameMessage;
+import emperor.model.message.GameMessage;
 
 /**
  *

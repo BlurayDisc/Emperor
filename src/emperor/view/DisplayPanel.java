@@ -17,12 +17,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import emperor.controller.GameController;
-import emperor.country.Country;
-import emperor.country.CountryFactory;
-import emperor.data.GameParameter;
-import emperor.message.GameMessage;
-import emperor.thread.PopularityThread;
-import emperor.thread.TaxThread;
+import emperor.controller.thread.PopularityThread;
+import emperor.controller.thread.TaxThread;
+import emperor.model.country.Country;
+import emperor.model.country.CountryFactory;
+import emperor.model.data.GameParameter;
+import emperor.model.message.GameMessage;
 
 /**
  *
@@ -61,7 +61,6 @@ public class DisplayPanel extends JPanel {
         // Loads Game Save Data
         gc = GameController.getInstance();
         //gc.loadGame();
-        
         
         // Init Game Parameters
         gp = GameParameter.getInstance();

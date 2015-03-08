@@ -14,6 +14,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
+import emperor.controller.GameController;
+
 /**
  *
  * @author RuN
@@ -31,6 +33,7 @@ public class MainFrame extends JFrame{
     public static final PoliticsPanel politicsPanel;
     public static final ButtonsPanel buttonsPanel;
     private final JPanel[] panels;
+    private GameController controller;
     
     static {
         contentPane = new ContentPane();
@@ -100,5 +103,9 @@ public class MainFrame extends JFrame{
         Dimension windowSize = getSize();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((int)(screenSize.getWidth() - windowSize.getWidth()) / 2, (int)(screenSize.getHeight() - windowSize.getHeight()) / 2);
+    }
+    
+    public void addController(GameController controller) {
+    	this.controller = controller;
     }
 }
