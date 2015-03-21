@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
+<<<<<<< HEAD
 import emperor.controller.GameController;
 <<<<<<< HEAD
 import emperor.data.GameParameter;
@@ -21,6 +22,8 @@ import emperor.message.GameMessage;
 =======
 >>>>>>> origin/master
 
+=======
+>>>>>>> parent of 7dd6b61... Update: Version beta 0.3
 /**
  *
  * @author RuN
@@ -38,7 +41,6 @@ public class MainFrame extends JFrame{
     public static final PoliticsPanel politicsPanel;
     public static final ButtonsPanel buttonsPanel;
     private final JPanel[] panels;
-    private GameController controller;
     
     private static final GameController gc;
     private static final GameMessage gm;
@@ -117,9 +119,5 @@ public class MainFrame extends JFrame{
         Dimension windowSize = getSize();
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((int)(screenSize.getWidth() - windowSize.getWidth()) / 2, (int)(screenSize.getHeight() - windowSize.getHeight()) / 2);
-    }
-    
-    public void addController(GameController controller) {
-    	this.controller = controller;
     }
 }

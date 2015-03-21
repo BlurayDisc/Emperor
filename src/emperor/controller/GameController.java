@@ -6,6 +6,7 @@
 package emperor.controller;
 
 import java.util.Calendar;
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 import javax.swing.JOptionPane;
@@ -22,6 +23,11 @@ import emperor.model.data.XmlParser;
 import emperor.view.ButtonsPanel;
 import emperor.view.MainFrame;
 >>>>>>> origin/master
+=======
+import emperor.country.China;
+import emperor.country.Country;
+import emperor.data.XmlParser;
+>>>>>>> parent of 7dd6b61... Update: Version beta 0.3
 
 /**
  *
@@ -42,12 +48,15 @@ public class GameController {
     /** GameController separates lots of the game's responsibilities **/
 =======
     private static final GameController instance = new GameController();
-    private MainFrame main;
     private final Country country;
     private long previousTime;
     
+<<<<<<< HEAD
 >>>>>>> origin/master
     public GameController() {
+=======
+    private GameController() {
+>>>>>>> parent of 7dd6b61... Update: Version beta 0.3
         
         // Init Variables
         country = China.getInstance();
@@ -58,13 +67,6 @@ public class GameController {
         
         popularityThread = new PopularityThread(country);
         popularityThread.setInterval(10000);
-    }
-    
-    public void addView(MainFrame frame) {
-    	this.main = frame;
-    }
-    
-    public void addView(ButtonsPanel panel) {
     }
 
     /** Saves game data from this current session **/

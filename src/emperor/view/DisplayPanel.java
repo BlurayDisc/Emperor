@@ -23,6 +23,7 @@ import emperor.country.CountryType;
 import emperor.message.GameMessage;
 =======
 import emperor.controller.GameController;
+<<<<<<< HEAD
 import emperor.controller.thread.PopularityThread;
 import emperor.controller.thread.TaxThread;
 import emperor.model.country.Country;
@@ -30,6 +31,14 @@ import emperor.model.country.CountryFactory;
 import emperor.model.data.GameParameter;
 import emperor.model.message.GameMessage;
 >>>>>>> origin/master
+=======
+import emperor.country.Country;
+import emperor.country.CountryFactory;
+import emperor.data.GameParameter;
+import emperor.message.GameMessage;
+import emperor.thread.PopularityThread;
+import emperor.thread.TaxThread;
+>>>>>>> parent of 7dd6b61... Update: Version beta 0.3
 
 /**
  *
@@ -70,6 +79,7 @@ public class DisplayPanel extends JPanel {
         // Loads Game Save Data
         gc = GameController.getInstance();
         //gc.loadGame();
+        
         
         // Init Game Parameters
         gp = GameParameter.getInstance();

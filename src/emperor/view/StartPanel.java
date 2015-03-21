@@ -15,11 +15,15 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import emperor.controller.GameController;
 import emperor.message.GameMessage;
 =======
 import emperor.model.message.GameMessage;
 >>>>>>> origin/master
+=======
+import emperor.message.GameMessage;
+>>>>>>> parent of 7dd6b61... Update: Version beta 0.3
 
 public class StartPanel extends JPanel {
 
@@ -57,7 +61,7 @@ public class StartPanel extends JPanel {
 	
 	private void initComponents() {
 		
-		confirmButton.setText("ȷ��");
+		confirmButton.setText("确认");
 		confirmButton.setBounds(200, 200, 80, 40);
 		confirmButton.addActionListener(new ActionListener() {
 			@Override
@@ -67,7 +71,7 @@ public class StartPanel extends JPanel {
 		});
 		add(confirmButton);
 		
-		quitButton.setText("�˳�");
+		quitButton.setText("退出");
 		quitButton.setBounds(300, 200, 80, 40);
 		quitButton.addActionListener(new ActionListener() {
 			@Override
@@ -77,7 +81,7 @@ public class StartPanel extends JPanel {
 		});
 		add(quitButton);
 		
-		cnRadioButton.setText(" ");
+		cnRadioButton.setText("中文");
 		cnRadioButton.setBounds(450, 150, 80, 22);
 		cnRadioButton.setSelected(true);
 		cnRadioButton.addActionListener(new ActionListener() {

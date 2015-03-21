@@ -1,7 +1,5 @@
 package emperor;
 
-import emperor.controller.GameController;
-import emperor.controller.thread.LoadGameThread;
 import emperor.view.MainFrame;
 
 /**
@@ -12,20 +10,6 @@ public class Emperor {
 
     public static void main(String[] args) {
                 
-    	loadGameData();
-    	
-    	setLookAndFeel();
-    	
-    	loadGUI();
-    }
-    
-    public static void loadGameData() {
-    	
-    	LoadGameThread thread = new LoadGameThread();
-    	thread.execute();
-    }
-    
-    public static void setLookAndFeel() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -34,9 +18,7 @@ public class Emperor {
                 }
             }
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex){}
-    }
-    
-    public static void loadGUI() {
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
 <<<<<<< HEAD
             @Override
@@ -44,6 +26,7 @@ public class Emperor {
                 new MainFrame().setVisible(true);
 =======
             public void run() {
+<<<<<<< HEAD
             	
                MainFrame frame = new MainFrame();
                frame.setVisible(true);
@@ -52,6 +35,9 @@ public class Emperor {
                
                frame.addController(controller);
 >>>>>>> origin/master
+=======
+                new MainFrame().setVisible(true);
+>>>>>>> parent of 7dd6b61... Update: Version beta 0.3
             }
         });
     }

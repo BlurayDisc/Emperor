@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import emperor.model.message.GameMessage;
+import emperor.message.GameMessage;
 
 /**
  *
