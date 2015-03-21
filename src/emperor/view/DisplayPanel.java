@@ -16,10 +16,20 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+<<<<<<< HEAD
 import emperor.country.Country;
 import emperor.country.CountryFactory;
 import emperor.country.CountryType;
 import emperor.message.GameMessage;
+=======
+import emperor.controller.GameController;
+import emperor.controller.thread.PopularityThread;
+import emperor.controller.thread.TaxThread;
+import emperor.model.country.Country;
+import emperor.model.country.CountryFactory;
+import emperor.model.data.GameParameter;
+import emperor.model.message.GameMessage;
+>>>>>>> origin/master
 
 /**
  *
@@ -52,7 +62,18 @@ public class DisplayPanel extends JPanel {
         
         // Init Variables
     	CountryFactory factory = CountryFactory.newInstance();
+<<<<<<< HEAD
         country = factory.get(CountryType.CH);
+=======
+        country = factory.get(Country.CH);
+        
+        // Loads Game Save Data
+        gc = GameController.getInstance();
+        //gc.loadGame();
+        
+        // Init Game Parameters
+        gp = GameParameter.getInstance();
+>>>>>>> origin/master
         
         // Initialise Button
         collectButton = new JButton();
