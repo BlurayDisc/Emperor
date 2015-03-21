@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package emperor.view;
 
 import java.awt.Graphics;
@@ -28,8 +23,12 @@ public class ButtonsPanel extends JPanel{
     private final JButton technologyButton;
     private final JButton infoButton;
     
-    public ButtonsPanel() {
+    private final GameMessage gm;
+    
+    public ButtonsPanel(GameMessage gm) {
                
+    	this.gm = gm;
+    	
         // Init Swing Components
         infoButton = new JButton();
         structureButton = new JButton();
@@ -38,7 +37,7 @@ public class ButtonsPanel extends JPanel{
         initButtons();
     }
     
-    protected void initText(GameMessage gm) {
+    protected void initText() {
     	infoButton.setText(gm.InfoButtonText);
     	structureButton.setText(gm.BuildingButtonText);
     	technologyButton.setText(gm.TechnologyButtonText);
@@ -48,9 +47,10 @@ public class ButtonsPanel extends JPanel{
     private void initButtons() {
                 
         // Info Button
-        infoButton.setBounds(50, 30, 100, 40);
+        infoButton.setBounds(50, 20, 100, 40);
         infoButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent action) {
+            @Override
+			public void actionPerformed(ActionEvent action) {
                 MainFrame.infoPanel.setVisible(true);
                 MainFrame.structurePanel.setVisible(false);
                 MainFrame.technologyPanel.setVisible(false);
@@ -59,9 +59,10 @@ public class ButtonsPanel extends JPanel{
         });
         
         // Structure Button
-        structureButton.setBounds(183, 30, 100, 40);
+        structureButton.setBounds(183, 20, 100, 40);
         structureButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent action) {
+            @Override
+			public void actionPerformed(ActionEvent action) {
                 MainFrame.structurePanel.setVisible(true);
                 MainFrame.technologyPanel.setVisible(false);
                 MainFrame.politicsPanel.setVisible(false);
@@ -70,9 +71,10 @@ public class ButtonsPanel extends JPanel{
         });
         
         // Technology Button
-        technologyButton.setBounds(317, 30, 100, 40);
+        technologyButton.setBounds(317, 20, 100, 40);
         technologyButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent action) {
+            @Override
+			public void actionPerformed(ActionEvent action) {
                 MainFrame.structurePanel.setVisible(false);
                 MainFrame.technologyPanel.setVisible(true);
                 MainFrame.politicsPanel.setVisible(false);
@@ -81,9 +83,10 @@ public class ButtonsPanel extends JPanel{
         });
         
         // Politics Button
-        politicsButton.setBounds(450, 30, 100, 40);
+        politicsButton.setBounds(450, 20, 100, 40);
         politicsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent action) {
+            @Override
+			public void actionPerformed(ActionEvent action) {
                 MainFrame.structurePanel.setVisible(false);
                 MainFrame.technologyPanel.setVisible(false);
                 MainFrame.politicsPanel.setVisible(true);

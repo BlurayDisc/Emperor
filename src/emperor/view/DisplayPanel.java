@@ -16,13 +16,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import emperor.controller.GameController;
 import emperor.country.Country;
 import emperor.country.CountryFactory;
-import emperor.data.GameParameter;
+import emperor.country.CountryType;
 import emperor.message.GameMessage;
-import emperor.thread.PopularityThread;
-import emperor.thread.TaxThread;
 
 /**
  *
@@ -32,8 +29,6 @@ public class DisplayPanel extends JPanel {
 
 	private static final long serialVersionUID = 8734835512061699344L;
 	private final Country country;
-    private final GameController gc;
-    private final GameParameter gp;
     
     private final JLabel balanceTitleLabel;
     private final JLabel balanceValueLabel;
@@ -49,22 +44,15 @@ public class DisplayPanel extends JPanel {
     private final JButton collectButton;
     private final JButton quitButton;
     
-    public final TaxThread taxThread;
-    public final PopularityThread popularityThread;  
+    private final GameMessage gm;
     
-    public DisplayPanel() {
+    public DisplayPanel(GameMessage gm) {
+    	
+    	this.gm = gm;
         
         // Init Variables
     	CountryFactory factory = CountryFactory.newInstance();
-        country = factory.get(Country.CH);
-        
-        // Loads Game Save Data
-        gc = GameController.getInstance();
-        //gc.loadGame();
-        
-        
-        // Init Game Parameters
-        gp = GameParameter.getInstance();
+        country = factory.get(CountryType.CH);
         
         // Initialise Button
         collectButton = new JButton();
@@ -84,26 +72,27 @@ public class DisplayPanel extends JPanel {
         
         initLabels();
         initButtons();
-        
-        // Start Timers
-        taxThread = new TaxThread(country);
-        taxThread.setInterval(1000);
-        
-        popularityThread = new PopularityThread(country);
-        popularityThread.setInterval(10000);
     }
     
-    public void initText(GameMessage gm) {
+    public void initText() {
+    	
+    	collectButton.setText(gm.collectButtonName);
     	quitButton.setText(gm.quitButtonText);
-        balanceTitleLabel.setText(country.getBalanceName());        
-        taxesTitleLabel.setText(country.getTaxesName());        
-        theftTitleLabel.setText(country.getTheftName());
-        powerTitleLabel.setText(country.getPowerName());        
-        popularityTitleLabel.setText(country.getPopularitName());
+        balanceTitleLabel.setText(gm.balanceName);        
+        taxesTitleLabel.setText(gm.taxesName);        
+        theftTitleLabel.setText(gm.theftName);
+        powerTitleLabel.setText(gm.powerName);        
+        popularityTitleLabel.setText(gm.popularityName);
+        
+        balanceValueLabel.setText(country.getBalance() + gm.currencyName);
+        taxesValueLabel.setText(country.getTaxes() + gm.currencyName);
+        theftValueLabel.setText(country.getTheft() + gm.currencyName);
+        powerValueLabel.setText(Integer.toString(country.getPower()));
+        popularityValueLabel.setText(Integer.toString(country.getPopularity()));
     }
     
 	public void updateBalance() {
-	    String balance = country.getBalance() + country.getCurrencyName();
+	    String balance = country.getBalance() + gm.currencyName;
 	    balanceValueLabel.setText(balance);
 	}
 	
@@ -115,12 +104,12 @@ public class DisplayPanel extends JPanel {
     private void initButtons() {
         
         // Theft Button
-        collectButton.setText(country.getCollectButtonName());
         collectButton.setBounds(260, 180, 80, 60);
         collectButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent action) {
+            @Override
+			public void actionPerformed(ActionEvent action) {
                 country.collect();
-                balanceValueLabel.setText(country.getBalance() + country.getCurrencyName());
+                balanceValueLabel.setText(country.getBalance() + gm.currencyName);
                 if (country.hasPopularitySystem()) {
                     popularityValueLabel.setText(Integer.toString(country.getPopularity()));
                 }
@@ -130,83 +119,54 @@ public class DisplayPanel extends JPanel {
         // Close Button
         quitButton.setBounds(525, 15, 60, 33);
         quitButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent action) {
+            @Override
+			public void actionPerformed(ActionEvent action) {
                 // gc.saveGame();
                 System.exit(0);
             }
         });
         
-        this.add(collectButton);
-        this.add(quitButton);
+        add(collectButton);
+        add(quitButton);
     }
     
     private void initLabels() {
         
-        balanceTitleLabel.setText(country.getBalanceName());
         balanceTitleLabel.setForeground(Color.BLACK);
-        balanceTitleLabel.setBounds(10, 10, 60, 22);
-        balanceValueLabel.setText(country.getBalance() + country.getCurrencyName());
+        balanceTitleLabel.setBounds(10, 10, 100, 22);
         balanceValueLabel.setBounds(65, 10, 160, 22);
         balanceValueLabel.setForeground(Color.BLACK);
         
-        taxesTitleLabel.setText(country.getTaxesName());
-        taxesTitleLabel.setBounds(10, 30, 60, 22);
+        taxesTitleLabel.setBounds(10, 30, 100, 22);
         taxesTitleLabel.setForeground(Color.GREEN);
-        taxesValueLabel.setText(country.getTaxes() + country.getCurrencyName());
-        taxesValueLabel.setBounds(65, 30, 80, 22);
+        taxesValueLabel.setBounds(65, 30, 100, 22);
         taxesValueLabel.setForeground(Color.GREEN);
         
-        theftTitleLabel.setText(country.getTheftName());
-        theftTitleLabel.setBounds(200, 10, 60, 22);
+        theftTitleLabel.setBounds(200, 10, 100, 22);
         theftTitleLabel.setForeground(Color.GRAY);
-        theftValueLabel.setText(country.getTheft() + country.getCurrencyName());
-        theftValueLabel.setBounds(265, 10, 80, 22);
+        theftValueLabel.setBounds(285, 10, 100, 22);
         theftValueLabel.setForeground(Color.GRAY);
         
-        powerTitleLabel.setText(country.getPowerName());
-        powerTitleLabel.setBounds(200, 30, 60, 22);
+        powerTitleLabel.setBounds(200, 30, 100, 22);
         powerTitleLabel.setForeground(Color.RED);
-        powerValueLabel.setText(Integer.toString(country.getPower()));
-        powerValueLabel.setBounds(265, 30, 80, 22);
+        powerValueLabel.setBounds(285, 30, 100, 22);
         powerValueLabel.setForeground(Color.RED);
         
-        popularityTitleLabel.setText(country.getPopularitName());
-        popularityTitleLabel.setBounds(400, 10, 60, 22);
+        popularityTitleLabel.setBounds(400, 10, 100, 22);
         popularityTitleLabel.setForeground(Color.BLACK);
-        popularityValueLabel.setText(Integer.toString(country.getPopularity()));
-        popularityValueLabel.setBounds(465, 10, 80, 22);
+        popularityValueLabel.setBounds(465, 10, 100, 22);
         popularityValueLabel.setForeground(Color.BLACK);
 
-        this.add(balanceTitleLabel);
-        this.add(balanceValueLabel);
-        this.add(powerTitleLabel);
-        this.add(powerValueLabel);
-        this.add(popularityTitleLabel);
-        this.add(popularityValueLabel);
-        this.add(theftTitleLabel);
-        this.add(theftValueLabel);
-        this.add(taxesTitleLabel);
-        this.add(taxesValueLabel);
-    }
-
-    public JLabel getBalanceValueLabel() {
-        return balanceValueLabel;
-    }
-
-    public JLabel getPowerValueLabel() {
-        return powerValueLabel;
-    }
-
-    public JLabel getPopularityValueLabel() {
-        return popularityValueLabel;
-    }
-
-    public JLabel getTheftValueLabel() {
-        return theftValueLabel;
-    }
-
-    public JLabel getTaxesValueLabel() {
-        return taxesValueLabel;
+        add(balanceTitleLabel);
+        add(balanceValueLabel);
+        add(powerTitleLabel);
+        add(powerValueLabel);
+        add(popularityTitleLabel);
+        add(popularityValueLabel);
+        add(theftTitleLabel);
+        add(theftValueLabel);
+        add(taxesTitleLabel);
+        add(taxesValueLabel);
     }
     
     @Override

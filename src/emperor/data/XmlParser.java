@@ -28,8 +28,9 @@ import emperor.controller.GameController;
 import emperor.country.China;
 import emperor.country.Country;
 import emperor.country.CountryFactory;
+import emperor.country.CountryType;
 import emperor.model.Player;
-import emperor.model.personnel.Person;
+import emperor.model.personnel.Farmer;
 
 /**
  *
@@ -41,6 +42,12 @@ public class XmlParser {
     
     private Document doc;
     private final String filePath;
+    
+    private double balance;
+    private double taxes;
+    private double theft;
+    private double popularity;
+    private double power;
     
     private XmlParser() {
         
@@ -123,8 +130,8 @@ public class XmlParser {
         // Politics parsing code goes here...
         
         // Update
-        China china = (China) CountryFactory.newInstance().getInstance();
-        GameController gc = GameController.getInstance();
+        China china = (China) CountryFactory.newInstance().get(CountryType.CH);
+        GameController gc = new GameController();
         
         gc.setPreviousTime((long) previousTime);
         china.setBalance((long) balance);
@@ -137,7 +144,7 @@ public class XmlParser {
         NodeList personels = doc.getElementsByTagName("person");
         Player player = Player.getInstance();
         for (int i = 0; i < personels.getLength(); i++) {
-            player.addPersonels(new Person(personels.item(i).getTextContent()));
+            player.addPersonels(new Farmer(personels.item(i).getTextContent()));
         }
     }
     

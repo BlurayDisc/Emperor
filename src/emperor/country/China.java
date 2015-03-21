@@ -15,16 +15,6 @@ public class China extends Country {
     
     protected China() {
         
-        // Init Strings
-        currencyName = " 两白银";
-        balanceName = "国库余额: ";
-        theftName = "征税: ";
-        taxesName = "税收: ";
-        powerName = "中央集权: ";
-        popularityName = "民心: ";
-        
-        collectButtonName = "征税";
-        
         // Init Variables
         balance = 0;
         theft = 1;

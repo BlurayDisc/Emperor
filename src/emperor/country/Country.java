@@ -10,22 +10,6 @@ package emperor.country;
  * @author RuN
  */
 public abstract class Country {
-    
-	public static final int CH = 0;
-	public static final int AU = 1;
-	public static final int UK = 2;
-	public static final int US = 3;
-	public static final int RU = 4;
-	public static final int KR = 5;
-
-    protected String currencyName;
-    protected String balanceName;
-    protected String theftName;
-    protected String taxesName;
-    protected String powerName;
-    protected String popularityName;
-    
-    protected String collectButtonName;
 
     protected long balance;
     protected long theft;
@@ -138,70 +122,16 @@ public abstract class Country {
         return power;
     }
     
-    public String getCurrencyName() {
-        return currencyName;
-    }
-
-    public String getBalanceName() {
-        return balanceName;
-    }
-
-    public String getTheftName() {
-        return theftName;
-    }
-
-    public String getTaxesName() {
-        return taxesName;
-    }
-
-    public String getPowerName() {
-        return powerName;
-    }
-    
     public int getPopularity() {
         return popularity;
     }
 
-    public String getPopularitName() {
-        return popularityName;
-    }
-    
-    public String getCollectButtonName() {
-        return collectButtonName;
-    }
     
     public int getInflation() {
         return inflation;
     }
 
     // Setters
-    public void setCurrencyName(String currencyName) {
-        this.currencyName = currencyName;
-    }
-
-    public void setBalanceName(String balanceName) {
-        this.balanceName = balanceName;
-    }
-
-    public void setTheftName(String theftName) {
-        this.theftName = theftName;
-    }
-
-    public void setTaxesName(String taxesName) {
-        this.taxesName = taxesName;
-    }
-
-    public void setPowerName(String powerName) {
-        this.powerName = powerName;
-    }
-
-    public void setPopularityName(String popularityName) {
-        this.popularityName = popularityName;
-    }
-
-    public void setCollectButtonName(String collectButtonName) {
-        this.collectButtonName = collectButtonName;
-    }
 
     public void setPower(int power) {
         this.power = power;

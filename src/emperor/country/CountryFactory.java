@@ -4,13 +4,13 @@ public class CountryFactory {
 	
 	private CountryFactory() {}
 	
-    public Country get(int country) {
+    public Country get(CountryType type) {
     	
     	Country instance;
     	
-    	if (country == Country.CH) {
+    	if (type == CountryType.CH) {
     		instance = China.getInstance();
-    	} else if (country == Country.AU) {
+    	} else if (type == CountryType.AU) {
     		instance = Australia.getInstance();
     	} else {
     		instance = null;

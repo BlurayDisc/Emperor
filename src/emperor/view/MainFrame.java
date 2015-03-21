@@ -14,6 +14,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 
+import emperor.controller.GameController;
+import emperor.data.GameParameter;
+import emperor.message.GameMessage;
+
 /**
  *
  * @author RuN
@@ -21,7 +25,7 @@ import javax.swing.border.BevelBorder;
 public class MainFrame extends JFrame{
     
 	private static final long serialVersionUID = -956722615494309197L;
-    
+
     private static final ContentPane contentPane;
     private static final StartPanel startPanel;
     public static final DisplayPanel displayPanel;
@@ -32,15 +36,24 @@ public class MainFrame extends JFrame{
     public static final ButtonsPanel buttonsPanel;
     private final JPanel[] panels;
     
+    private static final GameController gc;
+    private static final GameMessage gm;
+    private static final GameParameter gp;
+    
     static {
+    	
+    	gc = new GameController();
+    	gp = new GameParameter();
+    	gm = new GameMessage();
+    	
         contentPane = new ContentPane();
-        startPanel = new StartPanel();
-        displayPanel = new DisplayPanel();
+        startPanel = new StartPanel(gc, gm);
+        displayPanel = new DisplayPanel(gm);
+        buttonsPanel = new ButtonsPanel(gm);
         infoPanel = new InfoPanel();
         structurePanel = new StructurePanel();
         technologyPanel = new TechnologyPanel();
         politicsPanel = new PoliticsPanel();
-        buttonsPanel = new ButtonsPanel();
     }
     
     public MainFrame() {

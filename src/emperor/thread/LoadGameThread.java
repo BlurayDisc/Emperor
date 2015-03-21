@@ -22,14 +22,14 @@ public class LoadGameThread extends SwingWorker<Void, Void> {
 		country = China.getInstance();
         
         // Loads Game Save Data
-		gc = GameController.getInstance();
+		gc = new GameController();
         gc.loadGame();
         
         // Init Game Messages
         gm = new GameMessage();
         
         // Init Game Parameters
-        gp = GameParameter.getInstance();
+        gp = new GameParameter();
 		
 		return null;
 	}

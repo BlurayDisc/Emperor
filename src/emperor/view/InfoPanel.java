@@ -84,7 +84,8 @@ public class InfoPanel extends JPanel{
         regenerateButton.setText("新人");
         regenerateButton.setBounds(380, 50, 80, 60);
         regenerateButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent action) {
+            @Override
+			public void actionPerformed(ActionEvent action) {
                 Player player = Player.getInstance();
                 player.init();
                 for (int i = 0; i < 10; i++) {

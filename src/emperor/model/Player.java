@@ -7,6 +7,7 @@ package emperor.model;
 
 import java.util.ArrayList;
 
+import emperor.model.personnel.Farmer;
 import emperor.model.personnel.OfficialPosition;
 import emperor.model.personnel.Person;
 
@@ -33,7 +34,7 @@ public class Player {
         personels.clear();
         
         for (int i = 0; i < 10; i++) {
-            personels.add(new Person());
+            personels.add(new Farmer());
         }
     }
     

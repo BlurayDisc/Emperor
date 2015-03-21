@@ -5,16 +5,15 @@ package emperor.model.personnel;
  *
  * @author RuN
  */
-public class Person {
+public abstract class Person {
     
     protected String name;
     protected byte age;
     protected byte strength;
     protected byte intelligence;
     
-    public Person() {
-    	
-        name = Names.newRandomBasicName();
+    protected Person(String name) {
+    	this.name = name;
         age = 0;
         strength = 0;
         intelligence = 0;
@@ -25,7 +24,7 @@ public class Person {
     }
     
     public boolean isOldEnoighToDie() {
-        return age >= 0b110010;     // 50
+        return age >= 50;
     }
     
     public String getName() {
